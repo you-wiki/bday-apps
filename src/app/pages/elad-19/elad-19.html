@@ -1,0 +1,25 @@
+<div class="sent">
+  <div class="scrollable" #scrollable>
+    @if(sentContent().length === 0) {
+        <div class="header">
+            סוכן ברכות היומולדת שלך
+        </div>
+    }
+    @for (msg of sentContent(); track $index) {
+    <div
+      [class.user]="msg.role === 'user'"
+      [class.assistant]="msg.role === 'assistant'"
+      class="message"
+    >
+      <div class="bubble" [innerHTML]="msg.text"></div>
+    </div>
+    }
+  </div>
+</div>
+
+<div class="typing">
+  <div class="typing-text" [innerHTML]="currentUserMessage().text"></div>
+  @if(!currentUserMessage().text.trim()) {
+  <div class="placeholder">שאל מה שתרצה...</div>
+  }
+</div>
