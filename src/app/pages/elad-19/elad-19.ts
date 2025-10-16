@@ -1,5 +1,5 @@
 import { Component, computed, ElementRef, viewChild } from '@angular/core';
-import { buffer, bufferCount, filter, interval, map } from 'rxjs';
+import { buffer, bufferCount, delay, filter, interval, map } from 'rxjs';
 import { chatMessages } from './texts';
 import { projectChat, sentContent, txtLength } from './typing-logic';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
@@ -12,7 +12,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './elad-19.scss',
 })
 export default class Elad19 {
-  readonly content$ = interval(50).pipe(map((i) => projectChat(chatMessages, i * 50)));
+  readonly content$ = interval(50).pipe(
+    delay(5000),
+    map((i) => projectChat(chatMessages, i * 50))
+  );
 
   readonly scrollable = viewChild('scrollable', { read: ElementRef });
 
@@ -48,8 +51,8 @@ export default class Elad19 {
       .subscribe(([a, b]) => {
         const el = this.scrollable()?.nativeElement;
         if (!el) return;
-        // scroll by the difference in text length, times 1.5 to account for html tags
-        el.scrollBy({ top: (b - a) * 1.5, behavior: 'smooth' });
+        // scroll to bottom with smooth behavior
+        el.scrollTo({ top: el.scrollHeight, behavior: 'smooth'});
       });
   }
 }

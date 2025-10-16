@@ -1,11 +1,11 @@
 <div class="sent">
   <div class="scrollable" #scrollable>
     @if(sentContent().length === 0) {
-        <div class="header">
-            סוכן ברכות היומולדת שלך
-        </div>
-    }
-    @for (msg of sentContent(); track $index) {
+    <div class="header">
+      <img src="chat-logo.png" />
+      <div>סוכן ברכות היומולדת שלך</div>
+    </div>
+    } @for (msg of sentContent(); track $index) {
     <div
       [class.user]="msg.role === 'user'"
       [class.assistant]="msg.role === 'assistant'"
