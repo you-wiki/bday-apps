@@ -90,3 +90,79 @@
 [debug] [2026-10-09T16:28:08.792Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/0846f66d3f65ecb913fcd6e815d948083d4d404d12d29ef7465cacf4a41581c0 [stream]
 [debug] [2026-10-09T16:28:08.798Z] [hosting][populate queue][FINAL] {"max":917,"min":917,"avg":917,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":928}
 [debug] [2026-10-09T16:28:08.798Z] [hosting] uploads queued: 10
+[debug] [2026-10-09T16:28:09.776Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/ac2ba472860eef1bddd701052bf4c51fcffcf4fc7ec61bbeefb55dee502af68d 200
+[debug] [2026-10-09T16:28:09.776Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/ac2ba472860eef1bddd701052bf4c51fcffcf4fc7ec61bbeefb55dee502af68d [stream]
+[debug] [2026-10-09T16:28:09.790Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/5b8bd40f6846185f9dad089a0597665d93280c3a2df64bc5be9378a9de311156 200
+[debug] [2026-10-09T16:28:09.791Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/5b8bd40f6846185f9dad089a0597665d93280c3a2df64bc5be9378a9de311156 [stream]
+[debug] [2026-10-09T16:28:09.845Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/65745378d65989b6cbe45ccbcc5529cca7dddc8f23a2ca52fd9c882d35c24744 200
+[debug] [2026-10-09T16:28:09.845Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/65745378d65989b6cbe45ccbcc5529cca7dddc8f23a2ca52fd9c882d35c24744 [stream]
+[debug] [2026-10-09T16:28:09.952Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/3c65cb266e6ea73c02111ae9e43976c87ffb836e80a6cbdf9bb0001fef4eab58 200
+[debug] [2026-10-09T16:28:09.952Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/3c65cb266e6ea73c02111ae9e43976c87ffb836e80a6cbdf9bb0001fef4eab58 [stream]
+[debug] [2026-10-09T16:28:10.027Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/0d91fc9e1deae27311915a74d7ffee6076c5125a6105c8b40d38ac5d1f5a5a54 200
+[debug] [2026-10-09T16:28:10.027Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/0d91fc9e1deae27311915a74d7ffee6076c5125a6105c8b40d38ac5d1f5a5a54 [stream]
+[debug] [2026-10-09T16:28:10.034Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/f33783b089db67df230a08c9af346fee1defe8ce16a2417196e8054fb15aefd4 200
+[debug] [2026-10-09T16:28:10.035Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/f33783b089db67df230a08c9af346fee1defe8ce16a2417196e8054fb15aefd4 [stream]
+[debug] [2026-10-09T16:28:10.079Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/1ed64d0fcc3902ec8e293a7eda74b8f090ecd67324f872936ee24cb49bd4c9bb 200
+[debug] [2026-10-09T16:28:10.079Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/1ed64d0fcc3902ec8e293a7eda74b8f090ecd67324f872936ee24cb49bd4c9bb [stream]
+[debug] [2026-10-09T16:28:10.136Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/7185aa5f374ec5baff19ad2ef0d4af6ebcc6d6c7286edfb26bb371cae296b4a9 200
+[debug] [2026-10-09T16:28:10.136Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/7185aa5f374ec5baff19ad2ef0d4af6ebcc6d6c7286edfb26bb371cae296b4a9 [stream]
+[debug] [2026-10-09T16:28:10.154Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/0846f66d3f65ecb913fcd6e815d948083d4d404d12d29ef7465cacf4a41581c0 200
+[debug] [2026-10-09T16:28:10.155Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/0846f66d3f65ecb913fcd6e815d948083d4d404d12d29ef7465cacf4a41581c0 [stream]
+[debug] [2026-10-09T16:28:10.184Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/c1c56786f5a65cd0682bd340fd25303c9a3b151e6e9f102663a984aa7051a1a4 200
+[debug] [2026-10-09T16:28:10.184Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/bday-apps/versions/c983dd97dadcd371/files/c1c56786f5a65cd0682bd340fd25303c9a3b151e6e9f102663a984aa7051a1a4 [stream]
+[debug] [2026-10-09T16:28:10.184Z] [hosting][upload queue][FINAL] {"max":1397,"min":991,"avg":1212.4,"active":0,"complete":10,"success":10,"errored":0,"retried":0,"total":10,"elapsed":1400}
+[info] +  hosting[bday-apps]: file upload complete 
+[debug] [2026-10-09T16:28:10.186Z] [hosting] deploy completed after 2356ms
+[debug] [2026-10-09T16:28:10.186Z] [
+  {
+    "config": {
+      "public": "dist/cards/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-store, no-cache, must-revalidate, max-age=0"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "bday-apps"
+    },
+    "version": "projects/371245256177/sites/bday-apps/versions/c983dd97dadcd371"
+  }
+]
+[info] i  hosting[bday-apps]: finalizing version... 
+[debug] [2026-10-09T16:28:10.189Z] Checked if tokens are valid: true, expires at: 1791565321818
+[debug] [2026-10-09T16:28:10.189Z] Checked if tokens are valid: true, expires at: 1791565321818
+[debug] [2026-10-09T16:28:10.190Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/bday-apps/versions/c983dd97dadcd371 updateMask=status%2Cconfig
+[debug] [2026-10-09T16:28:10.190Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/bday-apps/versions/c983dd97dadcd371 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}],"headers":[{"glob":"**","headers":{"Cache-Control":"no-store, no-cache, must-revalidate, max-age=0","Pragma":"no-cache","Expires":"0"}}]}}
+[debug] [2026-10-09T16:28:11.743Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/bday-apps/versions/c983dd97dadcd371 200
+[debug] [2026-10-09T16:28:11.743Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/bday-apps/versions/c983dd97dadcd371 {"name":"projects/371245256177/sites/bday-apps/versions/c983dd97dadcd371","status":"FINALIZED","config":{"headers":[{"headers":{"Expires":"0","Cache-Control":"no-store, no-cache, must-revalidate, max-age=0","Pragma":"no-cache"},"glob":"**"}],"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-10-09T16:28:06.013667Z","createUser":{"email":"kobihari@gmail.com"},"finalizeTime":"2026-10-09T16:28:10.796680Z","finalizeUser":{"email":"kobihari@gmail.com"}}
+[debug] [2026-10-09T16:28:11.744Z] [hosting] finalized version for bday-apps:[object Object]
+[info] +  hosting[bday-apps]: version finalized 
+[info] i  hosting[bday-apps]: releasing new version... 
+[debug] [2026-10-09T16:28:11.744Z] Checked if tokens are valid: true, expires at: 1791565321818
+[debug] [2026-10-09T16:28:11.744Z] Checked if tokens are valid: true, expires at: 1791565321818
+[debug] [2026-10-09T16:28:11.744Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/bday-apps/channels/live/releases versionName=projects%2F371245256177%2Fsites%2Fbday-apps%2Fversions%2Fc983dd97dadcd371
+[debug] [2026-10-09T16:28:11.744Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/bday-apps/channels/live/releases {}
