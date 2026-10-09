@@ -114,20 +114,63 @@ app-ronni-store {
 
     .panda-stamp {
         position: absolute;
-        right: 24px;
-        bottom: 24px;
+        right: 28px;
+        bottom: 30px;
+        z-index: 2;
         display: flex;
+        width: 132px;
+        height: 132px;
         align-items: center;
-        gap: 10px;
-        padding: 8px 14px 8px 8px;
-        border-radius: 999px;
-        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        padding: 12px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        background: var(--ronni-accent);
         font-size: 1.125rem;
         font-weight: 800;
+        line-height: 1.05;
+        text-align: center;
+        transform: rotate(-7deg);
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .panda-stamp::before {
+        position: absolute;
+        inset: 5px;
+        border: 2px dashed rgb(17 17 17 / 55%);
+        border-radius: inherit;
+        content: '';
+    }
+
+    .panda-stamp::after {
+        position: absolute;
+        right: 34px;
+        bottom: -22px;
+        z-index: -1;
+        width: 58px;
+        height: 42px;
+        background: #c9e83d;
+        clip-path: polygon(0 0, 100% 0, 82% 100%, 50% 72%, 18% 100%);
+        content: '';
     }
 
     .panda-stamp img {
+        position: relative;
+        z-index: 1;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #111;
         border-radius: 50%;
+        background: #fff;
+    }
+
+    .panda-stamp__label {
+        position: relative;
+        z-index: 1;
+        max-width: 90px;
     }
 
     .panda-joke,
@@ -756,8 +799,7 @@ app-ronni-store {
     }
 
     .panda-stamp {
-        border: 1px solid rgb(255 255 255 / 70%);
-        box-shadow: 0 14px 35px rgb(0 0 0 / 32%), inset 0 1px 0 #fff;
+        box-shadow: 0 16px 38px rgb(0 0 0 / 42%), inset 0 2px 0 rgb(255 255 255 / 45%);
     }
 
     footer {
