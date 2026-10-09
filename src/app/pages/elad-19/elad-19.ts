@@ -1,13 +1,13 @@
-import { Component, computed, ElementRef, viewChild } from '@angular/core';
+import { Component, computed, ElementRef, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { buffer, bufferCount, delay, filter, interval, map } from 'rxjs';
 import { chatMessages } from './texts';
 import { projectChat, sentContent, txtLength } from './typing-logic';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-elad-19',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './elad-19.html',
   styleUrl: './elad-19.scss',
 })
