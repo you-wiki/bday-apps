@@ -32,7 +32,9 @@ yarn-error.log
 # Miscellaneous
 /.angular/cache
 .sass-cache/
+/.firebase/hosting.*
 /.firebase/logs/vsce-debug.log
+/firebase-debug.log
 /connect.lock
 /coverage
 /libpeerconnection.log
