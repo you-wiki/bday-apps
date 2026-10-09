@@ -49,10 +49,10 @@ export default class Elad19 {
         takeUntilDestroyed()
       )
       .subscribe(([a, b]) => {
-        const el = this.scrollable()?.nativeElement;
+        const el = this.scrollable()?.nativeElement as HTMLDivElement;
         if (!el) return;
         // scroll to bottom with smooth behavior
-        el.scrollTo({ top: el.scrollHeight, behavior: 'smooth'});
+        el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
       });
   }
 }
