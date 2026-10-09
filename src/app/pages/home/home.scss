@@ -16,7 +16,7 @@ header {
   margin-bottom: clamp(42px, 6vw, 74px);
 
   > span {
-    font-size: 0.9rem;
+    font-size: 1.125rem;
     font-weight: 800;
     letter-spacing: 0.15em;
   }
@@ -84,7 +84,7 @@ nav {
   top: 18px;
   left: 20px;
   z-index: 1;
-  font-size: 0.8rem;
+  font-size: 1.125rem;
   font-weight: 800;
 }
 
@@ -120,7 +120,7 @@ nav {
 
   > span {
     color: #666;
-    font-size: 0.9rem;
+    font-size: 1.125rem;
     font-weight: 800;
   }
 
@@ -134,7 +134,7 @@ nav {
   p {
     max-width: 390px;
     color: #555;
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1.6;
   }
 }

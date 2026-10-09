@@ -107,7 +107,7 @@ app-ronni-store {
         padding: 8px 14px 8px 8px;
         border-radius: 999px;
         background: #fff;
-        font-size: .9rem;
+        font-size: 1.125rem;
         font-weight: 800;
     }
 
@@ -139,8 +139,42 @@ app-ronni-store {
     .panda-joke p,
     .detail-joke p {
         color: #ddd;
-        font-size: .95rem;
+        font-size: 1.125rem;
         line-height: 1.45;
+    }
+
+    .brand-kicker,
+    .brand-button small,
+    .eyebrow,
+    .fine-print,
+    .menu-header nav button,
+    .table-number small,
+    .category-hero p,
+    .category-count,
+    .view-dish,
+    .dish-content small,
+    .price-label,
+    .toppings-grid p,
+    .back-button,
+    .ingredients span,
+    .ingredients p,
+    .detail-price p,
+    .detail-note,
+    footer {
+        font-size: 1.125rem !important;
+    }
+
+    .welcome-heading p,
+    .detail-description {
+        font-size: clamp(1.2rem, 1.8vw, 1.35rem) !important;
+    }
+
+    .brand strong,
+    .brand-button strong,
+    .primary-button,
+    .topping-price strong,
+    .price-label > span {
+        font-size: 1.125rem !important;
     }
 
     .detail-joke {
@@ -199,6 +233,85 @@ app-ronni-store {
         transform: translateY(-3px);
     }
 
+    .toppings-layout {
+        padding: 0 clamp(20px, 6vw, 90px) 70px;
+    }
+
+    .toppings-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .toppings-grid article {
+        display: flex;
+        min-width: 0;
+        overflow: hidden;
+        flex-direction: column;
+        border: 1px solid #292929;
+        border-radius: 18px;
+        background: #151515;
+    }
+
+    .topping-photo {
+        position: relative;
+        flex: 0 0 auto;
+        aspect-ratio: 5 / 4;
+        overflow: hidden;
+        background: #111;
+    }
+
+    .topping-photo > img {
+        position: absolute;
+        top: var(--image-top);
+        left: var(--image-left);
+        width: 440%;
+        max-width: none;
+        height: auto;
+    }
+
+    .topping-icon {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        display: grid;
+        width: 46px;
+        height: 46px;
+        border: 1px solid rgb(255 255 255 / 25%);
+        border-radius: 50%;
+        background: rgb(9 9 9 / 88%);
+        font-size: 1.5rem;
+        place-items: center;
+        backdrop-filter: blur(8px);
+    }
+
+    .topping-copy {
+        flex: 1;
+        padding: 18px 18px 14px;
+    }
+
+    .toppings-grid h2 {
+        margin-bottom: 6px;
+        font-size: 1.35rem;
+    }
+
+    .toppings-grid p {
+        color: #aaa;
+        line-height: 1.45;
+    }
+
+    .topping-price {
+        margin: 0 18px 18px;
+        padding-top: 14px;
+        border-top: 1px solid #383838;
+    }
+
+    .topping-price strong {
+        display: block;
+        margin-top: 6px;
+        font-size: 1.125rem;
+    }
+
     .panda-stamp {
         animation: stamp-enter 520ms 300ms cubic-bezier(.22, 1, .36, 1) both;
     }
@@ -212,6 +325,18 @@ app-ronni-store {
     app-ronni-store {
         .welcome-photo {
             min-height: 36vh;
+        }
+
+        @media (max-width: 900px) {
+            app-ronni-store .toppings-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 620px) {
+            app-ronni-store .toppings-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .welcome-copy {

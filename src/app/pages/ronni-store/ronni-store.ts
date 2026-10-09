@@ -27,6 +27,8 @@ interface Topping {
   icon: string;
   price: string;
   joke: string;
+  imageLeft: string;
+  imageTop: string;
 }
 
 @Component({
@@ -138,14 +140,14 @@ export default class RonniStore {
   ];
 
   readonly toppings: readonly Topping[] = [
-    { name: 'נוטלה', icon: '🍫', price: '5 סקווישים', joke: 'כפית נדיבה, סקוויז נדיב יותר' },
-    { name: 'סירופ שוקולד', icon: '🤎', price: '3 סקווישים', joke: 'כל טיפה שווה לחיצה' },
-    { name: 'סירופ מייפל', icon: '🍁', price: '4 סקווישי דוב', joke: 'יובא היישר מהעץ הכי רך' },
-    { name: 'קצפת', icon: '☁️', price: '3 סקווישי ענן', joke: 'רכים בדיוק כמו הקצפת' },
-    { name: 'פירורי אוראו', icon: '🍪', price: '8 סקווישים', joke: 'כתשנו עוגיות, לא סקווישים' },
-    { name: 'אננס', icon: '🍍', price: '10 סקווישי אננס', joke: 'קוצניים מבחוץ ורכים מבפנים' },
-    { name: 'פירות יער', icon: '🫐', price: '11 סקווישים', joke: 'פטל ואוכמניות מהעונה הנכונה' },
-    { name: 'בננות', icon: '🍌', price: '4 סקווישי בננה', joke: 'קילפנו בשבילכן' },
+    { name: 'נוטלה', icon: '🍫', price: '5 סקווישים', joke: 'כפית נדיבה, סקוויז נדיב יותר', imageLeft: '-5%', imageTop: '-54%' },
+    { name: 'סירופ שוקולד', icon: '🤎', price: '3 סקווישים', joke: 'כל טיפה שווה לחיצה', imageLeft: '-115%', imageTop: '-54%' },
+    { name: 'סירופ מייפל', icon: '🍁', price: '4 סקווישי דוב', joke: 'יובא היישר מהעץ הכי רך', imageLeft: '-225%', imageTop: '-54%' },
+    { name: 'קצפת', icon: '☁️', price: '3 סקווישי ענן', joke: 'רכים בדיוק כמו הקצפת', imageLeft: '-335%', imageTop: '-183%' },
+    { name: 'פירורי אוראו', icon: '🍪', price: '8 סקווישים', joke: 'כתשנו עוגיות, לא סקווישים', imageLeft: '-335%', imageTop: '-54%' },
+    { name: 'אננס', icon: '🍍', price: '10 סקווישי אננס', joke: 'קוצניים מבחוץ ורכים מבפנים', imageLeft: '-5%', imageTop: '-183%' },
+    { name: 'פירות יער', icon: '🫐', price: '11 סקווישים', joke: 'פטל ואוכמניות מהעונה הנכונה', imageLeft: '-115%', imageTop: '-183%' },
+    { name: 'בננות', icon: '🍌', price: '4 סקווישי בננה', joke: 'קילפנו בשבילכן', imageLeft: '-225%', imageTop: '-183%' },
   ];
 
   readonly isWelcome = signal(true);
