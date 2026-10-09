@@ -213,13 +213,25 @@ export default class RonniStore {
     }
 
     if (this.activeTransition) {
-      this.activeTransition.skipTransition();
+      try {
+        this.activeTransition.skipTransition();
+      } catch (error: unknown) {
+        if (!(error instanceof DOMException) || error.name !== 'InvalidStateError') {
+          throw error;
+        }
+      }
+      this.activeTransition = null;
       applyUpdate();
       return;
     }
 
     const transition = this.document.startViewTransition(applyUpdate);
     this.activeTransition = transition;
+    void transition.ready.catch((error: unknown) => {
+      if (!(error instanceof DOMException) || error.name !== 'InvalidStateError') {
+        throw error;
+      }
+    });
     void transition.finished.then(
       () => this.clearTransition(transition),
       () => this.clearTransition(transition),
