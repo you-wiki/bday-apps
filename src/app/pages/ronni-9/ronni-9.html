@@ -1,0 +1,158 @@
+<main>
+  <a class="back-link" routerLink="/">
+    <span aria-hidden="true">→</span>
+    לכל ההפתעות
+  </a>
+
+  <div class="decorations" aria-hidden="true">
+    <span class="star star--one">✦</span>
+    <span class="star star--two">✦</span>
+    <span class="star star--three">✦</span>
+  </div>
+
+  @if (!isOpen()) {
+    <section class="welcome" aria-labelledby="welcome-title">
+      <p class="eyebrow">יש כאן משהו במיוחד בשבילך...</p>
+      <h1 id="welcome-title">רוני<br /><span>בת 9!</span></h1>
+      <button type="button" (click)="openCard()" aria-controls="birthday-card">
+        <span class="gift" aria-hidden="true">
+          <span class="gift__bow">♡</span>
+          <span class="gift__lid"></span>
+          <span class="gift__box"></span>
+        </span>
+        <span>לפתיחת ההפתעה</span>
+      </button>
+    </section>
+  } @else {
+    <article id="birthday-card" class="birthday-card">
+      <p class="birthday-card__label">רוני בוני שלנו בת 9!</p>
+      <h1 #cardHeading tabindex="-1">מזל טוב,<br />ילדה אהובה שלנו</h1>
+
+      <div class="ronni-story">
+        <section class="ronni-moment">
+          <figure class="ronni-moment__photo">
+            <img
+              ngSrc="/ronni-9/pretty.jpeg"
+              alt="רוני מחייכת למצלמה"
+              width="1200"
+              height="1600"
+            />
+          </figure>
+          <div class="birthday-card__message">
+            <p>
+              אנחנו כל כך נהנים לראות אותך גדלה ומתפתחת, והופכת מילדה קטנה וחמודה
+              ל... ילדה גדולה וחמודה. אבל לא רק חמודה.
+            </p>
+          </div>
+        </section>
+
+        <section class="ronni-moment ronni-moment--reverse">
+          <figure class="ronni-moment__photo">
+            <img
+              ngSrc="/ronni-9/frackless.jpeg"
+              alt="רוני מחייכת עם הנמשים שלה"
+              width="1200"
+              height="1600"
+            />
+          </figure>
+          <div class="birthday-card__message">
+            <p>
+              את ילדה טובה, מלאה בכוונות טובות וכל כך רגישה לכל מה שמסביבך. את
+              יודעת להרגיש ולהבין כל כך הרבה דברים קטנים שאפילו מבוגרים מפספסים.
+            </p>
+            <strong>מאיפה, ילדה קטנה שלנו, מאיפה הרגישות הזאת?</strong>
+          </div>
+        </section>
+
+        <section class="ronni-moment">
+          <figure class="ronni-moment__photo">
+            <img
+              ngSrc="/ronni-9/eorobics.jpeg"
+              alt="רוני עושה עמידת ידיים על חוף הים"
+              width="1200"
+              height="1600"
+            />
+          </figure>
+          <div class="birthday-card__message">
+            <p>
+              ויש את האהבה שלך לתחביבים. לאהוב לרקוד זה דבר אחד, אבל רוני וריקודים
+              הם כמו שני תאומים. את אוהבת לרקוד כבר מאז שהיית בת שנתיים - תאמיני
+              לנו, אנחנו זוכרים.
+            </p>
+            <p>
+              אבל לפחות כמו שאת אוהבת את הריקוד, הריקוד אוהב אותך. רואים שנועדתם
+              זה לזו: בדרך שבה את זוכרת את כל הצעדים אחרי פעם או פעמיים שאת רואה
+              אותם, ובדרך שבה את מכניסה בהם חיים ומשמעות שאפילו מי שהמציא את
+              הריקוד לא חשב עליהם.
+            </p>
+            <p>
+              זה פשוט כל כך כיף לראות את זה, ולנו נשאר רק לחכות בסבלנות ולגלות
+              כמה רחוק תיקחי את זה ולאילו גבהים תגיעי.
+            </p>
+          </div>
+        </section>
+
+        <section class="ronni-moment ronni-moment--reverse">
+          <figure class="ronni-moment__photo">
+            <img
+              ngSrc="/ronni-9/new-skates.jpeg"
+              alt="רוני עם הגלגיליות החדשות שלה"
+              width="1200"
+              height="1600"
+            />
+          </figure>
+          <div class="birthday-card__message">
+            <p>
+              אבל מעל הכול, זה הכיף העצום שבלבלות איתך. לראות אותך מתרגשת,
+              להפתיע אותך ולחוות את השמחה הטוטאלית הזאת שלך.
+            </p>
+            <strong>מהחלקה על הקרח...</strong>
+          </div>
+        </section>
+
+        <section class="ronni-moment">
+          <figure class="ronni-moment__photo">
+            <img
+              ngSrc="/ronni-9/pancakes.jpeg"
+              alt="רוני נהנית מקינוח שוקולד"
+              width="900"
+              height="1600"
+            />
+          </figure>
+          <div class="birthday-card__message">
+            <strong>מפנקייקים...</strong>
+            <p>
+              מחדרי בריחה, מסרטים, משירים, מבישול ומאפייה ואפילו... מהמרוץ
+              לחשבון.
+            </p>
+          </div>
+        </section>
+
+        <section class="ronni-moment ronni-moment--reverse">
+          <figure class="ronni-moment__photo">
+            <img
+              ngSrc="/ronni-9/swimming.jpeg"
+              alt="רוני נהנית בבריכה"
+              width="1200"
+              height="1600"
+            />
+          </figure>
+          <div class="birthday-card__message">
+            <p>
+              אז רוני שלנו, תמשיכי להיות מלאה באהבה, בחברות ובהתרגשות. תמשיכי
+              להצליח וליהנות מההצלחה בכל מה שתרצי - בריקוד ובהחלקה על הקרח, וגם
+              בחשבון ובאנגלית.
+            </p>
+            <p>
+              תמשיכי להיות הרוני בוני הנפלאה שלנו, שאנחנו כל כך אוהבים ושנהנים
+              איתה מכל דקה.
+            </p>
+            <strong>אנחנו אוהבים אותך, רוני שלנו.</strong>
+          </div>
+        </section>
+      </div>
+
+      <div class="birthday-card__nine" aria-hidden="true">9</div>
+    </article>
+  }
+</main>

@@ -889,3 +889,77 @@ app-ronni-store {
         animation-duration: 1ms;
     }
 }
+/* Ronni's birthday story lives here to keep the lazy component within its style budget. */
+.ronni-story {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(42px, 8vw, 84px);
+  margin-top: clamp(38px, 7vw, 68px);
+}
+
+.ronni-moment {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(24px, 5vw, 54px);
+  align-items: center;
+
+  .birthday-card__message {
+    grid-column: 2;
+    margin-top: 0;
+  }
+}
+
+.ronni-moment--reverse {
+  grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr);
+
+  .ronni-moment__photo {
+    grid-column: 2;
+  }
+
+  .birthday-card__message {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+.ronni-moment__photo {
+  grid-row: 1;
+  grid-column: 1;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 3px solid #371466;
+  border-radius: 18px 7px 18px 7px;
+  background: #d9c8ff;
+  box-shadow: 5px 5px 0 #ff5d8f;
+  transform: rotate(2deg);
+
+  img {
+    display: block;
+    width: 100%;
+    height: clamp(300px, 42vw, 470px);
+    object-fit: cover;
+  }
+}
+
+.ronni-moment--reverse .ronni-moment__photo {
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 600px) {
+  .ronni-moment,
+  .ronni-moment--reverse {
+    grid-template-columns: 1fr;
+
+    .ronni-moment__photo,
+    .birthday-card__message {
+      grid-row: auto;
+      grid-column: 1;
+    }
+  }
+
+  .ronni-moment__photo img {
+    height: min(105vw, 430px);
+  }
+}
