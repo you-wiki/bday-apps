@@ -1,5 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { NgOptimizedImage, ViewportScroller } from '@angular/common';
+import { DOCUMENT, NgOptimizedImage, ViewportScroller } from '@angular/common';
+import { ChangeDetectorRef, Component, computed, inject, signal } from '@angular/core';
 
 type CategoryId = 'pancakes' | 'waffles' | 'mini' | 'toppings';
 
@@ -11,12 +11,14 @@ interface Category {
 }
 
 interface Dish {
+  id: string;
   name: string;
   category: Exclude<CategoryId, 'toppings'>;
   description: string;
   ingredients: string;
   price: string;
   joke: string;
+  pandaSays: string;
   image: string;
 }
 
@@ -34,6 +36,9 @@ interface Topping {
   styleUrl: './ronni-store.scss',
 })
 export default class RonniStore {
+  private activeTransition: ViewTransition | null = null;
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly document = inject(DOCUMENT);
   private readonly viewportScroller = inject(ViewportScroller);
 
   readonly categories: readonly Category[] = [
@@ -65,70 +70,82 @@ export default class RonniStore {
 
   readonly dishes: readonly Dish[] = [
     {
+      id: 'ronni-classic',
       name: 'הקלאסי של רוני',
       category: 'pancakes',
       description: 'שלושה פנקייקים ענניים עם חמאה שנמסה בדיוק בזמן ומפל מייפל.',
       ingredients: 'פנקייקים, חמאה, סירופ מייפל',
-      price: '4,999 ₪',
-      joke: 'המייפל כלול. המשכנתא בנפרד.',
+      price: '7 סקווישים',
+      joke: 'המייפל כלול. אפשר גם אחד ענקי במקום.',
+      pandaSays: '״קלאסי״ זה שם מנומס ל״תביאו עוד מייפל לפני שאני עושה פה סצנה״.',
       image: '/ronni-store/pancakes-classic.webp',
     },
     {
+      id: 'panda-pancake',
       name: 'פנקייק פנדה',
       category: 'pancakes',
       description: 'מגדל פנקייקים עם נוטלה, בננות, פירות יער ופירורי אוראו.',
       ingredients: 'פנקייקים, נוטלה, בננה, פירות יער, אוראו',
-      price: '11,800 ₪',
-      joke: 'הפנדה טעמה ואישרה. מנהלת הבנק עדיין בהלם.',
+      price: '12 סקווישי דאמפלינג',
+      joke: 'הפנדה טעמה ואישרה. רק שלא יהיו דביקים.',
+      pandaSays: 'קראו לזה פנקייק פנדה ואני דורשת עשרה אחוז מהנוטלה וזכויות על התמונה.',
       image: '/ronni-store/pancakes-loaded.webp',
     },
     {
+      id: 'black-forest-waffle',
       name: 'וופל יער שחור',
       category: 'waffles',
       description: 'וופל בלגי זהוב עם נוטלה, בננות, פטל, אוכמניות וקראנץ׳ אוראו.',
       ingredients: 'וופל בלגי, נוטלה, בננה, פטל, אוכמניות, אוראו',
-      price: '13,450 ₪',
-      joke: 'כולל נוף ליער. לא כולל את היער.',
+      price: '9 סקווישים ענקיים',
+      joke: 'כולל נוף ליער ומקום מיוחד לסקווישים.',
+      pandaSays: 'יש פה פירות יער, אז זה בריא. הודעתי למדענים — הם עדיין בוכים.',
       image: '/ronni-store/waffles-berries.webp',
     },
     {
+      id: 'oreo-extreme-waffle',
       name: 'וופל אוראו אקסטרים',
       category: 'waffles',
       description: 'וופל פריך תחת שכבת שוקולד ופירורי אוראו בכמות בלתי אחראית.',
       ingredients: 'וופל בלגי, סירופ שוקולד, פירורי אוראו',
-      price: '22,222 ₪',
-      joke: 'פירור אחד נפל, אז הורדנו שקל.',
+      price: '20 סקווישי פנדה',
+      joke: 'פירור אחד נפל, אז הורדנו סקווישי.',
+      pandaSays: 'לא רואים את הוופל? מצוין. זאת בדיוק כמות האוראו שביקשתי.',
       image: '/ronni-store/waffles-oreo.webp',
     },
     {
+      id: 'mini-party',
       name: 'מיני מסיבה',
       category: 'mini',
       description: 'קערה שמחה של מיני פנקייק, נוטלה, בננות, פירות יער ואוראו.',
       ingredients: 'מיני פנקייק, נוטלה, בננה, פירות יער, אוראו',
-      price: '8,765 ₪',
-      joke: 'מיני בשם בלבד. המחיר בגודל משפחתי.',
+      price: '6 סקווישי קצפת',
+      joke: 'מיני בשם בלבד. הסקווישים בגודל משפחתי.',
+      pandaSays: 'אחד בכל ביס? הצחקתן אותי. אני מכניסה ארבעה ובוהה במי ששופטת.',
       image: '/ronni-store/mini-loaded.webp',
     },
     {
+      id: 'mini-tropical',
       name: 'מיני טרופי',
       category: 'mini',
       description: 'מיני פנקייק עם אננס, בננות ומייפל לחופשה בלי לצאת מהכיסא.',
       ingredients: 'מיני פנקייק, אננס, בננה, סירופ מייפל',
-      price: '9,990 ₪',
-      joke: 'כרטיס טיסה לא כלול, אבל המחיר מרגיש שכן.',
+      price: '15 סקווישי דאמפלינג',
+      joke: 'כרטיס טיסה לא כלול. סקוויז אחד לפני ההמראה.',
+      pandaSays: 'האננס בחופשה, הבננה בשיזוף ואני שילמתי 15 סקווישים כדי להיות המלון שלהן.',
       image: '/ronni-store/mini-tropical.webp',
     },
   ];
 
   readonly toppings: readonly Topping[] = [
-    { name: 'נוטלה', icon: '🍫', price: '1,450 ₪', joke: 'כפית נדיבה, מחיר נדיב יותר' },
-    { name: 'סירופ שוקולד', icon: '🤎', price: '980 ₪', joke: 'כל טיפה מחושבת' },
-    { name: 'סירופ מייפל', icon: '🍁', price: '1,200 ₪', joke: 'יובא היישר מהעץ הכי יקר' },
-    { name: 'קצפת', icon: '☁️', price: '777 ₪', joke: 'ענן קטן עם הוצאות גדולות' },
-    { name: 'פירורי אוראו', icon: '🍪', price: '2,020 ₪', joke: 'כתשנו בעצמנו, החשבון בהתאם' },
-    { name: 'אננס', icon: '🍍', price: '3,600 ₪', joke: 'כולל שמש טרופית דמיונית' },
-    { name: 'פירות יער', icon: '🫐', price: '4,400 ₪', joke: 'פטל ואוכמניות מהעונה הנכונה' },
-    { name: 'בננות', icon: '🍌', price: '890 ₪', joke: 'קילפנו בשבילכן' },
+    { name: 'נוטלה', icon: '🍫', price: '5 סקווישים', joke: 'כפית נדיבה, סקוויז נדיב יותר' },
+    { name: 'סירופ שוקולד', icon: '🤎', price: '3 סקווישים', joke: 'כל טיפה שווה לחיצה' },
+    { name: 'סירופ מייפל', icon: '🍁', price: '4 סקווישי דוב', joke: 'יובא היישר מהעץ הכי רך' },
+    { name: 'קצפת', icon: '☁️', price: '3 סקווישי ענן', joke: 'רכים בדיוק כמו הקצפת' },
+    { name: 'פירורי אוראו', icon: '🍪', price: '8 סקווישים', joke: 'כתשנו עוגיות, לא סקווישים' },
+    { name: 'אננס', icon: '🍍', price: '10 סקווישי אננס', joke: 'קוצניים מבחוץ ורכים מבפנים' },
+    { name: 'פירות יער', icon: '🫐', price: '11 סקווישים', joke: 'פטל ואוכמניות מהעונה הנכונה' },
+    { name: 'בננות', icon: '🍌', price: '4 סקווישי בננה', joke: 'קילפנו בשבילכן' },
   ];
 
   readonly isWelcome = signal(true);
@@ -137,38 +154,81 @@ export default class RonniStore {
   readonly selectedCategory = computed(
     () => this.categories.find(({ id }) => id === this.selectedCategoryId()) ?? this.categories[0],
   );
+  readonly pandaCategorySays = computed(() => {
+    const comments: Record<CategoryId, string> = {
+      pancakes: 'ערימת הפנקייקים הזאת כל כך גבוהה, שהזמנתי מעלית. תיפגשו איתי בקומת המייפל.',
+      waffles: 'אני לא אומרת שהוופל מושלם, אבל כבר ביטלתי תוכניות עם חברות כדי להיות איתו.',
+      mini: 'מיני? חמודים. אני אקח 84. אל תעשו פרצוף — אני פנדה בצמיחה.',
+      toppings: 'מי שאומרת ״בלי תוספות״ פשוט עוד לא טעמה אושר. וגם קצת חשודה בעיניי.',
+    };
+
+    return comments[this.selectedCategoryId()];
+  });
   readonly visibleDishes = computed(() =>
     this.dishes.filter(({ category }) => category === this.selectedCategoryId()),
   );
 
   enterMenu(): void {
-    this.isWelcome.set(false);
-    this.scrollToTop();
+    this.transitionTo(() => this.isWelcome.set(false));
   }
 
   goHome(): void {
-    this.selectedDish.set(null);
-    this.isWelcome.set(true);
-    this.scrollToTop();
+    this.transitionTo(() => {
+      this.selectedDish.set(null);
+      this.isWelcome.set(true);
+    });
   }
 
   selectCategory(category: CategoryId): void {
-    this.selectedDish.set(null);
-    this.selectedCategoryId.set(category);
-    this.scrollToTop();
+    if (category === this.selectedCategoryId() && !this.selectedDish()) return;
+
+    this.transitionTo(() => {
+      this.selectedDish.set(null);
+      this.selectedCategoryId.set(category);
+    });
   }
 
   showDish(dish: Dish): void {
-    this.selectedDish.set(dish);
-    this.scrollToTop();
+    this.transitionTo(() => this.selectedDish.set(dish));
   }
 
   closeDish(): void {
-    this.selectedDish.set(null);
-    this.scrollToTop();
+    this.transitionTo(() => this.selectedDish.set(null));
   }
 
-  private scrollToTop(): void {
-    setTimeout(() => this.viewportScroller.scrollToPosition([0, 0]));
+  dishViewTransitionName(dish: Dish): string {
+    return `dish-${dish.id}`;
+  }
+
+  private transitionTo(update: () => void): void {
+    const applyUpdate = () => {
+      update();
+      this.changeDetectorRef.detectChanges();
+      this.viewportScroller.scrollToPosition([0, 0]);
+    };
+
+    if (!this.document.startViewTransition) {
+      applyUpdate();
+      return;
+    }
+
+    if (this.activeTransition) {
+      this.activeTransition.skipTransition();
+      applyUpdate();
+      return;
+    }
+
+    const transition = this.document.startViewTransition(applyUpdate);
+    this.activeTransition = transition;
+    void transition.finished.then(
+      () => this.clearTransition(transition),
+      () => this.clearTransition(transition),
+    );
+  }
+
+  private clearTransition(transition: ViewTransition): void {
+    if (this.activeTransition === transition) {
+      this.activeTransition = null;
+    }
   }
 }

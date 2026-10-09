@@ -14,3 +14,181 @@ body {
     margin: 0;
     padding: 0;
 }
+
+::view-transition-group(*) {
+    animation-duration: 620ms;
+    animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+}
+
+::view-transition-old(root) {
+    animation: 260ms ease both fade-out;
+}
+
+::view-transition-new(root) {
+    animation: 520ms cubic-bezier(.22, 1, .36, 1) both fade-in;
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+        transform: scale(.985);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(.995);
+    }
+}
+
+@keyframes welcome-image {
+    from {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes welcome-copy {
+    from {
+        opacity: 0;
+        transform: translateX(36px);
+    }
+}
+
+@keyframes header-enter {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes content-rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+}
+
+@keyframes card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(26px) scale(.98);
+    }
+}
+
+@keyframes detail-copy-enter {
+    from {
+        opacity: 0;
+        transform: translateX(28px);
+    }
+}
+
+@keyframes stamp-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.9);
+    }
+}
+
+app-ronni-store {
+    .panda-joke,
+    .detail-joke {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: 570px;
+        margin-top: 24px;
+        padding: 11px 16px 11px 11px;
+        border: 1px solid #d8d5ce;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 8px 22px rgb(0 0 0 / 5%);
+    }
+
+    .panda-joke img,
+    .detail-joke img {
+        flex: 0 0 auto;
+        border: 1px solid #111;
+        border-radius: 50%;
+    }
+
+    .panda-joke p,
+    .detail-joke p {
+        color: #333;
+        font-size: .85rem;
+        line-height: 1.45;
+    }
+
+    .detail-joke {
+        margin: 0 0 28px;
+        border-radius: 14px;
+        background: #f5f3ef;
+    }
+
+    .welcome-photo img {
+        animation: welcome-image 1.4s cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    .welcome-copy {
+        animation: welcome-copy 900ms 120ms cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    .primary-button {
+        transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .menu-header {
+        animation: header-enter 500ms cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    .menu-header nav button {
+        transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .category-hero,
+    .toppings-photo {
+        animation: content-rise 560ms cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    .dish-card {
+        animation: card-enter 560ms calc(80ms + (var(--item-index, 0) * 90ms))
+            cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    .view-dish {
+        transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .dish-card:hover .view-dish {
+        background: #e6ff63;
+        transform: translateX(-4px);
+    }
+
+    .toppings-grid article {
+        animation: card-enter 500ms calc(70ms + (var(--item-index, 0) * 55ms))
+            cubic-bezier(.22, 1, .36, 1) both;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .toppings-grid article:hover {
+        box-shadow: 0 14px 28px rgb(0 0 0 / 9%);
+        transform: translateY(-3px);
+    }
+
+    .panda-stamp {
+        animation: stamp-enter 520ms 300ms cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    .detail-copy {
+        animation: detail-copy-enter 620ms 80ms cubic-bezier(.22, 1, .36, 1) both;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 1ms;
+    }
+}

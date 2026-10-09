@@ -22,7 +22,10 @@
         <div class="welcome-heading">
           <span class="eyebrow">ברוכות הבאות</span>
           <h1 id="welcome-title">מתוק בפה.<br />כואב בארנק.</h1>
-          <p>תפריט פנדה חגיגי, מוגזם וטעים במיוחד. שבו בנחת — אין לנו לאן למהר.</p>
+          <p>
+            תפריט פנדה חגיגי, מוגזם וטעים במיוחד. המסעדה היחידה בארץ שבה משלמים
+            בסקווישים במקום בשקלים.
+          </p>
         </div>
 
         <button class="primary-button" type="button" (click)="enterMenu()">
@@ -30,7 +33,7 @@
           <span aria-hidden="true">←</span>
         </button>
 
-        <p class="fine-print">המסעדה, המנות והמחירים בדיוניים לחלוטין. התיאבון אמיתי.</p>
+        <p class="fine-print">לא מקבלים מזומן או אשראי. סקווישים רכים בלבד.</p>
       </div>
     </section>
   } @else {
@@ -62,7 +65,10 @@
 
       @if (selectedDish(); as dish) {
         <section class="dish-detail" aria-labelledby="dish-title">
-          <div class="detail-photo">
+          <div
+            class="detail-photo"
+            [style.view-transition-name]="dishViewTransitionName(dish)"
+          >
             <img [ngSrc]="dish.image" [alt]="dish.name" fill priority />
             <span class="panda-stamp">
               <img ngSrc="/ronni-store/panda.webp" alt="" width="54" height="54" />
@@ -79,11 +85,18 @@
               <span>מה בפנים?</span>
               <p>{{ dish.ingredients }}</p>
             </div>
+            <aside class="detail-joke">
+              <img ngSrc="/ronni-store/panda.webp" alt="" width="48" height="48" />
+              <p><strong>דבר הפנדה:</strong> {{ dish.pandaSays }}</p>
+            </aside>
             <div class="detail-price">
+              <small class="price-label"><span aria-hidden="true">🏷️</span> מחיר</small>
               <span>{{ dish.price }}</span>
               <p>{{ dish.joke }}</p>
             </div>
-            <p class="detail-note">אין צורך להזמין — רק לבחור עם העיניים ולצחוק על המחיר.</p>
+            <p class="detail-note">
+              התשלום בסקווישים בלבד. סקווישי דאמפלינג מתקבלים בשמחה מיוחדת.
+            </p>
           </div>
         </section>
       } @else {
@@ -92,6 +105,10 @@
             <span class="eyebrow">התפריט של רוני</span>
             <h1 id="category-title">{{ selectedCategory().title }}</h1>
             <p>{{ selectedCategory().caption }}</p>
+            <aside class="panda-joke">
+              <img ngSrc="/ronni-store/panda.webp" alt="" width="42" height="42" />
+              <p><strong>דבר הפנדה:</strong> {{ pandaCategorySays() }}</p>
+            </aside>
           </div>
           <span class="category-count">
             @if (selectedCategoryId() === 'toppings') {
@@ -111,17 +128,20 @@
                 fill
                 priority
               />
-              <span>מוסיפות חיוך<br />וגם כמה אפסים</span>
+              <span>מוסיפות חיוך<br />ועוד כמה סקווישים</span>
             </div>
             <div class="toppings-grid">
-              @for (topping of toppings; track topping.name) {
-                <article>
+              @for (topping of toppings; track topping.name; let index = $index) {
+                <article [style.--item-index]="index">
                   <span class="topping-icon" aria-hidden="true">{{ topping.icon }}</span>
                   <div>
                     <h2>{{ topping.name }}</h2>
                     <p>{{ topping.joke }}</p>
                   </div>
-                  <strong>{{ topping.price }}</strong>
+                  <div class="topping-price">
+                    <span class="price-label"><span aria-hidden="true">🏷️</span> מחיר</span>
+                    <strong>{{ topping.price }}</strong>
+                  </div>
                 </article>
               }
             </div>
@@ -129,8 +149,16 @@
         } @else {
           <section class="dish-grid" aria-label="מנות בקטגוריה">
             @for (dish of visibleDishes(); track dish.name; let index = $index) {
-              <button class="dish-card" type="button" (click)="showDish(dish)">
-                <span class="dish-image">
+              <button
+                class="dish-card"
+                type="button"
+                [style.--item-index]="index"
+                (click)="showDish(dish)"
+              >
+                <span
+                  class="dish-image"
+                  [style.view-transition-name]="dishViewTransitionName(dish)"
+                >
                   <img
                     [ngSrc]="dish.image"
                     [alt]="dish.name"
@@ -146,6 +174,7 @@
                     <small>{{ dish.description }}</small>
                   </span>
                   <span class="price">
+                    <span class="price-label"><span aria-hidden="true">🏷️</span> מחיר</span>
                     <strong>{{ dish.price }}</strong>
                     <small>{{ dish.joke }}</small>
                   </span>
@@ -158,7 +187,7 @@
 
       <footer>
         <img ngSrc="/ronni-store/panda.webp" alt="" width="34" height="34" />
-        <span>רוני סטור · מחיר יקר, זיכרון מתוק</span>
+        <span>רוני סטור · המסעדה שבה סקווישי הוא כסף</span>
       </footer>
     </div>
   }
