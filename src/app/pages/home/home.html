@@ -1,0 +1,41 @@
+<main>
+  <header>
+    <span>הפתעות יום הולדת</span>
+    <h1>איזו הפתעה<br />פותחים היום?</h1>
+    <p>כל עמוד הוא עולם קטן שנבנה במיוחד ליום הולדת אחד.</p>
+  </header>
+
+  <nav aria-label="אפליקציות יום הולדת">
+    <a routerLink="/elad-19" class="app-card app-card--elad">
+      <span class="app-number">01</span>
+      <div class="app-image">
+        <img ngSrc="/chat-logo.png" alt="" width="160" height="160" priority />
+      </div>
+      <div class="app-copy">
+        <span>ברכה אינטראקטיבית</span>
+        <h2>אלעד בן 19</h2>
+        <p>שיחת יום הולדת שמתעוררת לחיים, הודעה אחרי הודעה.</p>
+      </div>
+      <strong>לפתיחת ההפתעה <span aria-hidden="true">←</span></strong>
+    </a>
+
+    <a routerLink="/ronni-store" class="app-card app-card--ronni">
+      <span class="app-number">02</span>
+      <div class="app-image">
+        <img
+          ngSrc="/ronni-store/panda.webp"
+          alt=""
+          width="240"
+          height="240"
+          priority
+        />
+      </div>
+      <div class="app-copy">
+        <span>מסעדת קינוחים דמיונית</span>
+        <h2>רוני סטור</h2>
+        <p>תפריט פנדה חגיגי שבו משלמים רק בסקווישים.</p>
+      </div>
+      <strong>לפתיחת התפריט <span aria-hidden="true">←</span></strong>
+    </a>
+  </nav>
+</main>
