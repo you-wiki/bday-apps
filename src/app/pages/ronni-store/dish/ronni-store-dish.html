@@ -1,0 +1,34 @@
+<section class="dish-detail" [attr.aria-labelledby]="'dish-' + dish.id">
+  <div class="detail-photo" [style.view-transition-name]="dishTransitionName">
+    <img [ngSrc]="dish.image" [alt]="dish.name" fill priority />
+    <span class="panda-stamp">
+      <img ngSrc="/ronni-store/panda.webp" alt="" width="54" height="54" />
+      בחירת הפנדה
+    </span>
+  </div>
+
+  <div class="detail-copy">
+    <a class="back-button" [routerLink]="['/ronni-store', category.id]">
+      → חזרה לקטגוריה
+    </a>
+    <span class="eyebrow">{{ category.title }}</span>
+    <h1 [id]="'dish-' + dish.id">{{ dish.name }}</h1>
+    <p class="detail-description">{{ dish.description }}</p>
+    <div class="ingredients">
+      <span>מה בפנים?</span>
+      <p>{{ dish.ingredients }}</p>
+    </div>
+    <aside class="detail-joke">
+      <img ngSrc="/ronni-store/panda.webp" alt="" width="48" height="48" />
+      <p><strong>דבר הפנדה:</strong> {{ dish.pandaSays }}</p>
+    </aside>
+    <div class="detail-price">
+      <small class="price-label"><span aria-hidden="true">🏷️</span> מחיר</small>
+      <span>{{ dish.price }}</span>
+      <p>{{ dish.joke }}</p>
+    </div>
+    <p class="detail-note">
+      התשלום בסקווישים בלבד. סקווישי דאמפלינג מתקבלים בשמחה מיוחדת.
+    </p>
+  </div>
+</section>

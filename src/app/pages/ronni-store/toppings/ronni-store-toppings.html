@@ -1,0 +1,41 @@
+<section class="category-hero" aria-labelledby="toppings-title">
+  <div>
+    <span class="eyebrow">התפריט של רוני</span>
+    <h1 id="toppings-title">{{ category.title }}</h1>
+    <p>{{ category.caption }}</p>
+    <aside class="panda-joke">
+      <img ngSrc="/ronni-store/panda.webp" alt="" width="42" height="42" />
+      <p><strong>דבר הפנדה:</strong> {{ category.pandaSays }}</p>
+    </aside>
+  </div>
+  <span class="category-count">{{ toppings.length }} תוספות</span>
+</section>
+
+<section class="toppings-layout" aria-label="תוספות">
+  <div class="toppings-grid">
+    @for (topping of toppings; track topping.name; let index = $index) {
+      <article [style.--item-index]="index">
+        <div class="topping-photo">
+          <img
+            ngSrc="/ronni-store/toppings.webp"
+            [alt]="'קערית ' + topping.name"
+            width="1536"
+            height="1024"
+            [priority]="index === 0"
+            [style.--image-left]="topping.imageLeft"
+            [style.--image-top]="topping.imageTop"
+          />
+          <span class="topping-icon" aria-hidden="true">{{ topping.icon }}</span>
+        </div>
+        <div class="topping-copy">
+          <h2>{{ topping.name }}</h2>
+          <p>{{ topping.joke }}</p>
+        </div>
+        <div class="topping-price">
+          <span class="price-label"><span aria-hidden="true">🏷️</span> מחיר</span>
+          <strong>{{ topping.price }}</strong>
+        </div>
+      </article>
+    }
+  </div>
+</section>

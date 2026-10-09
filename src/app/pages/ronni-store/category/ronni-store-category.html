@@ -1,0 +1,47 @@
+<section class="category-hero" [attr.aria-labelledby]="'category-' + category.id">
+  <div>
+    <span class="eyebrow">התפריט של רוני</span>
+    <h1 [id]="'category-' + category.id">{{ category.title }}</h1>
+    <p>{{ category.caption }}</p>
+    <aside class="panda-joke">
+      <img ngSrc="/ronni-store/panda.webp" alt="" width="42" height="42" />
+      <p><strong>דבר הפנדה:</strong> {{ category.pandaSays }}</p>
+    </aside>
+  </div>
+  <span class="category-count">{{ dishes.length }} מנות</span>
+</section>
+
+<section class="dish-grid" aria-label="מנות בקטגוריה">
+  @for (dish of dishes; track dish.id; let index = $index) {
+    <a
+      class="dish-card"
+      [routerLink]="['/ronni-store/dish', dish.id]"
+      [style.--item-index]="index"
+    >
+      <span
+        class="dish-image"
+        [style.view-transition-name]="dishViewTransitionName(dish.id)"
+      >
+        <img
+          [ngSrc]="dish.image"
+          [alt]="dish.name"
+          width="1536"
+          height="1024"
+          priority
+        />
+        <span class="view-dish">לצפייה במנה ←</span>
+      </span>
+      <span class="dish-content">
+        <span>
+          <strong>{{ dish.name }}</strong>
+          <small>{{ dish.description }}</small>
+        </span>
+        <span class="price">
+          <span class="price-label"><span aria-hidden="true">🏷️</span> מחיר</span>
+          <strong>{{ dish.price }}</strong>
+          <small>{{ dish.joke }}</small>
+        </span>
+      </span>
+    </a>
+  }
+</section>
