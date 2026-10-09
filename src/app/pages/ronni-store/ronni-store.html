@@ -1,0 +1,165 @@
+<main class="store" dir="rtl">
+  @if (isWelcome()) {
+    <section class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-photo">
+        <img
+          ngSrc="/ronni-store/pancakes-loaded.webp"
+          alt="מגדל פנקייקים עם שוקולד, בננות, פירות יער ואוראו"
+          fill
+          priority
+        />
+      </div>
+
+      <div class="welcome-copy">
+        <div class="brand brand--large">
+          <img ngSrc="/ronni-store/panda.webp" alt="" width="128" height="128" priority />
+          <div>
+            <span class="brand-kicker">מסעדת הקינוחים של</span>
+            <strong>רוני סטור</strong>
+          </div>
+        </div>
+
+        <div class="welcome-heading">
+          <span class="eyebrow">ברוכות הבאות</span>
+          <h1 id="welcome-title">מתוק בפה.<br />כואב בארנק.</h1>
+          <p>תפריט פנדה חגיגי, מוגזם וטעים במיוחד. שבו בנחת — אין לנו לאן למהר.</p>
+        </div>
+
+        <button class="primary-button" type="button" (click)="enterMenu()">
+          <span>לתפריט שלנו</span>
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <p class="fine-print">המסעדה, המנות והמחירים בדיוניים לחלוטין. התיאבון אמיתי.</p>
+      </div>
+    </section>
+  } @else {
+    <div class="menu">
+      <header class="menu-header">
+        <button class="brand-button" type="button" (click)="goHome()" aria-label="חזרה למסך הבית">
+          <img ngSrc="/ronni-store/panda.webp" alt="" width="58" height="58" />
+          <span><strong>רוני סטור</strong><small>תפריט קינוחים</small></span>
+        </button>
+
+        <nav aria-label="קטגוריות בתפריט">
+          @for (category of categories; track category.id) {
+            <button
+              type="button"
+              [class.active]="selectedCategoryId() === category.id && !selectedDish()"
+              [attr.aria-current]="selectedCategoryId() === category.id ? 'page' : null"
+              (click)="selectCategory(category.id)"
+            >
+              {{ category.title }}
+            </button>
+          }
+        </nav>
+
+        <div class="table-number" aria-label="מספר שולחן 19">
+          <small>שולחן</small>
+          <strong>19</strong>
+        </div>
+      </header>
+
+      @if (selectedDish(); as dish) {
+        <section class="dish-detail" aria-labelledby="dish-title">
+          <div class="detail-photo">
+            <img [ngSrc]="dish.image" [alt]="dish.name" fill priority />
+            <span class="panda-stamp">
+              <img ngSrc="/ronni-store/panda.webp" alt="" width="54" height="54" />
+              בחירת הפנדה
+            </span>
+          </div>
+
+          <div class="detail-copy">
+            <button class="back-button" type="button" (click)="closeDish()">→ חזרה לקטגוריה</button>
+            <span class="eyebrow">{{ selectedCategory().title }}</span>
+            <h1 id="dish-title">{{ dish.name }}</h1>
+            <p class="detail-description">{{ dish.description }}</p>
+            <div class="ingredients">
+              <span>מה בפנים?</span>
+              <p>{{ dish.ingredients }}</p>
+            </div>
+            <div class="detail-price">
+              <span>{{ dish.price }}</span>
+              <p>{{ dish.joke }}</p>
+            </div>
+            <p class="detail-note">אין צורך להזמין — רק לבחור עם העיניים ולצחוק על המחיר.</p>
+          </div>
+        </section>
+      } @else {
+        <section class="category-hero" aria-labelledby="category-title">
+          <div>
+            <span class="eyebrow">התפריט של רוני</span>
+            <h1 id="category-title">{{ selectedCategory().title }}</h1>
+            <p>{{ selectedCategory().caption }}</p>
+          </div>
+          <span class="category-count">
+            @if (selectedCategoryId() === 'toppings') {
+              {{ toppings.length }} תוספות
+            } @else {
+              {{ visibleDishes().length }} מנות
+            }
+          </span>
+        </section>
+
+        @if (selectedCategoryId() === 'toppings') {
+          <section class="toppings-layout" aria-label="תוספות">
+            <div class="toppings-photo">
+              <img
+                ngSrc="/ronni-store/toppings.webp"
+                alt="קעריות עם נוטלה, שוקולד, מייפל, קצפת, אוראו ופירות"
+                fill
+                priority
+              />
+              <span>מוסיפות חיוך<br />וגם כמה אפסים</span>
+            </div>
+            <div class="toppings-grid">
+              @for (topping of toppings; track topping.name) {
+                <article>
+                  <span class="topping-icon" aria-hidden="true">{{ topping.icon }}</span>
+                  <div>
+                    <h2>{{ topping.name }}</h2>
+                    <p>{{ topping.joke }}</p>
+                  </div>
+                  <strong>{{ topping.price }}</strong>
+                </article>
+              }
+            </div>
+          </section>
+        } @else {
+          <section class="dish-grid" aria-label="מנות בקטגוריה">
+            @for (dish of visibleDishes(); track dish.name; let index = $index) {
+              <button class="dish-card" type="button" (click)="showDish(dish)">
+                <span class="dish-image">
+                  <img
+                    [ngSrc]="dish.image"
+                    [alt]="dish.name"
+                    width="1536"
+                    height="1024"
+                    [priority]="index === 0"
+                  />
+                  <span class="view-dish">לצפייה במנה ←</span>
+                </span>
+                <span class="dish-content">
+                  <span>
+                    <strong>{{ dish.name }}</strong>
+                    <small>{{ dish.description }}</small>
+                  </span>
+                  <span class="price">
+                    <strong>{{ dish.price }}</strong>
+                    <small>{{ dish.joke }}</small>
+                  </span>
+                </span>
+              </button>
+            }
+          </section>
+        }
+      }
+
+      <footer>
+        <img ngSrc="/ronni-store/panda.webp" alt="" width="34" height="34" />
+        <span>רוני סטור · מחיר יקר, זיכרון מתוק</span>
+      </footer>
+    </div>
+  }
+</main>
