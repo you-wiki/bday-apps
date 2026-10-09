@@ -1,7 +1,7 @@
 app-ronni-store {
   display: block;
   min-height: 100dvh;
-  overflow-x: hidden;
+  overflow-x: clip;
   color: #fff;
   background: #090909;
   font-family: Arial, 'Noto Sans Hebrew', sans-serif;
@@ -112,12 +112,13 @@ a {
   color: #111;
   font-size: 1.08rem;
   font-weight: 800;
+  text-decoration: none;
   cursor: pointer;
 
   &:hover,
   &:focus-visible {
     background: #e6ff63;
-    transform: translateX(-5px);
+    transform: translateY(-3px);
   }
 }
 
@@ -386,11 +387,13 @@ a {
 }
 
 .back-button {
+  display: inline-flex;
   align-self: flex-start;
-  margin-bottom: 48px;
-  padding: 10px 0;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  padding: 8px 10px 8px 16px;
   border: 0;
-  border-bottom: 1px solid #fff;
   background: transparent;
   color: #fff;
   font-weight: 800;

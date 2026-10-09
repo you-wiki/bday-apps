@@ -9,7 +9,8 @@
 
   <div class="detail-copy">
     <a class="back-button" [routerLink]="['/ronni-store', category.id]">
-      → חזרה לקטגוריה
+      <span class="back-button__icon" aria-hidden="true">→</span>
+      <span>חזרה לקטגוריה</span>
     </a>
     <span class="eyebrow">{{ category.title }}</span>
     <h1 [id]="'dish-' + dish.id">{{ dish.name }}</h1>
